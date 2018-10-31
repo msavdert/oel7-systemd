@@ -1,4 +1,4 @@
-FROM oraclelinux:7-slim
+FROM oraclelinux:7
 MAINTAINER Melih Savdert
 ENV container docker
 ##enable epel
