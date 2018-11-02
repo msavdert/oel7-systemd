@@ -3,8 +3,10 @@ MAINTAINER Melih Savdert
 ENV container docker
 ##enable epel
 RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+# Update the operating system
+RUN yum -y update
 ##installpackages
-RUN touch /var/lib/rpm/* && yum --enablerepo=epel-testing -y install tar unzip dnsmasq nfs-utils sudo selinux-policy firewalld qemu-img git ansible
+RUN touch /var/lib/rpm/* && yum --enablerepo=epel-testing -y install tar unzip nfs-utils sudo selinux-policy firewalld
 RUN touch /var/lib/rpm/* && yum -y reinstall glibc-common
 RUN yum -y clean all
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
